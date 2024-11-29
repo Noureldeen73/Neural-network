@@ -30,7 +30,7 @@ class MNISTDataset(Dataset):
     def __getitem__(self, idx):
         return self.images[idx], self.labels[idx]
     
-    def __getitem2__(self,idx):
+    def __getitem__(self,idx):
         image = self.images[idx].reshape(1, 28, 28)  # Add a channel dimension
         label = self.labels[idx]
         return torch.tensor(image, dtype=torch.float32), torch.tensor(label, dtype=torch.long)
