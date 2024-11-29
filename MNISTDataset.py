@@ -56,17 +56,3 @@ class MNISTDataset(Dataset):
         self.labels = np.frombuffer(buffer, dtype = np.uint8)
 
         self.labels = torch.tensor(self.labels, dtype= torch.long)
-
-
-def draw_image(images_root, labels_root, image_index):
-    mnist = MNISTDataset(images_root, labels_root)
-    mnist.images = np.reshape(mnist.images, (mnist.image_number_of_images, 28, 28))
-    image, label = mnist.__getitem__(image_index)
-    print ('Image dimensions: {}x{}'.format(image.shape[0], image.shape[1]))
-    print ('Label: {}'.format(label.item()))
-    plt.imshow(image)
-    plt.show()
-
-if __name__ == "__main__":
-    draw_image("/home/noureldeen/Data/term 7/Intro to ML/Labs/ML_assignment2/archive/train-images.idx3-ubyte", "/home/noureldeen/Data/term 7/Intro to ML/Labs/ML_assignment2/archive/train-labels.idx1-ubyte", 1473)
-    draw_image("/home/noureldeen/Data/term 7/Intro to ML/Labs/ML_assignment2/archive/t10k-images.idx3-ubyte", "/home/noureldeen/Data/term 7/Intro to ML/Labs/ML_assignment2/archive/t10k-labels.idx1-ubyte", 1473)
