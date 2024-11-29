@@ -28,7 +28,9 @@ class MNISTDataset(Dataset):
         return self.image_number_of_images
 
     def __getitem__(self, idx):
-        return self.images[idx], self.labels[idx]
+        image = self.images[idx].reshape(1, 28, 28)
+        label = self.labels[idx]
+        return torch.tensor(image, dtype=torch.float32), torch.tensor(label, dtype=torch.long)
 
     def image_init_dataset(self):
         image_file = open(self.image_data_root, "rb")
